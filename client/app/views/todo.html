@@ -1,0 +1,172 @@
+<div ng-class="allowFullHeight ? 'fullheight': ''" class="fluid-container">
+	<md-toolbar class="secondoryBackground md-whiteframe-5dp">
+		<div class="md-toolbar-tools">
+
+			<md-truncate>
+				<strong>Crossover Todo</strong>
+			</md-truncate>
+
+			<span flex></span>
+			<!-- username -->
+			<span class="textCapitalize" ng-bind='user.username'></span>
+			<!-- logout button -->
+			<md-button ng-click="$state.go('logout');" class="md-fab md-mini secondoryBackgroundLighten" aria-label="logout">
+				<md-icon class="fa fa-sign-out"></md-icon>
+				<md-tooltip md-direction="bottom">Logout</md-tooltip>
+			</md-button>
+
+		</div>
+	</md-toolbar>
+
+	<div ng-class="allowFullHeight ? 'underTolbarHeight': ''" style="margin:0" class="row coloredBg">
+		<div class="col-md-6">
+			<div class="bigbox md-whiteframe-5dp" >
+				<!-- 1st bucket -->
+				<md-toolbar class="inProgressBg md-whiteframe-2dp">
+					<div class="md-toolbar-tools">
+						<md-truncate align="center" class="fullwidth">
+							<strong>In Progress</strong>
+						</md-truncate>
+					</div>
+				</md-toolbar>
+
+				<div id="leftTaskWrapper" class="tasksWrapper">
+					<div draggable="true" data='{{v}}' index={{key}} ng-dblclick="showInlineEditor(key,v);" ng-repeat="(key,v) in tasks.notCompleted" class="singleCard  md-whiteframe-4dp animate-repeat">
+						<!-- in case of edition inline -->
+						<div ng-if="!v.enableEdition" class="wrap">
+							<!-- delete button to delete item -->
+							<md-button ng-click="confirmDelete($event,v._id)" class="md-icon-button pull-right itemDelete" aria-label="Delete Item">
+								<i class="fa fa-times"></i>
+								<md-tooltip md-direction="left">Delete</md-tooltip>
+							</md-button>
+							<!-- structing the Item attributes -->
+							<strong class="md-title" ng-bind="v.title"></strong>
+							<div ng-bind-html='renderHtml(v.description)'></div>
+							<span class="pull-right textCapitalize" ng-bind="v.author.username"></span>
+							<div class="clearfix "></div>
+						</div>
+						<div class="inlineEditor" ng-if="v.enableEdition">
+							<!-- inline editor -->
+							<md-button ng-click="cancelInlineEditor(key, v)" class="md-icon-button pull-right itemDelete" aria-label="Update Item">
+								<i class="fa fa-times"></i>
+								<md-tooltip md-direction="left">Cancel</md-tooltip>
+							</md-button>
+							<form ng-submit='updateItemFunc(updateItem,key)'>
+								<md-input-container md-no-float class="inlineInput">
+									<input autofocus ng-model="updateItem.title" placeholder="Title">
+								</md-input-container>
+								<md-input-container md-no-float class="inlineInput">
+									<input ng-model="updateItem.description" placeholder="description">
+								</md-input-container>
+								<!-- for update -->
+								<md-button type=submit class="md-fab md-mini pull-right secondoryBackgroundLighten saveBtn" ng-disabled='!(updateItem.title && updateItem.description)' aria-label="save Item">
+									<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+									<md-tooltip md-direction="left">Update</md-tooltip>
+								</md-button>
+							</form>
+							<!-- clear fixing the floats -->
+							<div class="clearfix height30"></div>
+
+						</div>
+					</div>
+
+					<div class="addnew singleCard  md-whiteframe-4dp" ng-if="addNew">
+						<md-button ng-click="cancelAddNew()" class="md-icon-button pull-right itemDelete" aria-label="Add Item">
+							<i class="fa fa-times"></i>
+							<md-tooltip md-direction="left">Cancel</md-tooltip>
+						</md-button>
+						<form ng-submit='saveNewItem(item)'>
+							<!-- for for sacing new item -->
+							<md-input-container md-no-float class="inlineInput">
+								<input autofocus ng-model="item.title" placeholder="Title">
+							</md-input-container>
+							<md-input-container md-no-float class="inlineInput">
+								<input ng-model="item.description" placeholder="description">
+							</md-input-container>
+							
+							<md-button type=submit class="md-fab md-mini pull-right secondoryBackgroundLighten saveBtn" ng-disabled='!(item.title && item.description)' aria-label="save Item">
+								<i class="fa fa-floppy-o" aria-hidden="true"></i>
+								<md-tooltip md-direction="left">Save</md-tooltip>
+							</md-button>
+						</form>
+
+
+						<div class="clearfix height30"></div>
+					</div>
+
+					<!-- placeholder for drop -->
+					<div droppable id="leftdroper" class="droper">
+						<div  class="wrapper">
+
+						</div>
+					</div>
+
+					<!-- button of adding new item -->
+					<section layout="row" layout-align="center center" >
+						<md-button ng-disabled="addNew" ng-click="addNewItem()" class="md-raised">Add new item</md-button>
+					</section>							
+				</div>
+
+
+			</div>
+		</div>	
+		<div class="col-md-6">
+			<div class="bigbox md-whiteframe-5dp" >
+				<!-- Second bucket -->
+				<md-toolbar class="completedBg md-whiteframe-2dp">
+					<div class="md-toolbar-tools">
+						<md-truncate align="center" class="fullwidth">
+							<strong>Completed</strong>
+						</md-truncate>
+					</div>
+				</md-toolbar>
+
+				<!-- bucket content -->
+				<div id="rightTaskWrapper" class="tasksWrapper">
+						<div draggable="true" data='{{v}}' index={{key}} draggable ng-dblclick="showInlineEditor(key,v);" ng-repeat="(key,v) in tasks.completed" class="singleCard  md-whiteframe-4dp animate-repeat">
+							<div ng-if="!v.enableEdition" class="wrap">
+								<md-button ng-click="confirmDelete($event,v._id)" class="md-icon-button pull-right itemDelete" aria-label="Delete Item">
+									<i class="fa fa-times"></i>
+									<md-tooltip md-direction="left">Delete</md-tooltip>
+								</md-button>
+								<strong class="md-title" ng-bind="v.title"></strong>
+								<div ng-bind-html='renderHtml(v.description)'></div>
+								<span class="pull-right textCapitalize" ng-bind="v.author.username"></span>
+								<div class="clearfix "></div>
+							</div>
+							<div ng-hide="!v.enableEdition" class="inlineEditor" ng-if="v.enableEdition">
+	
+								<md-button ng-click="cancelInlineEditor(key, v)" class="md-icon-button pull-right itemDelete" aria-label="Update Item">
+									<i class="fa fa-times"></i>
+									<md-tooltip md-direction="left">Cancel</md-tooltip>
+								</md-button>
+								<form ng-submit='updateItemFunc(updateItem,key)'>
+									<md-input-container md-no-float class="inlineInput">
+										<input autofocus ng-model="updateItem.title" placeholder="Title">
+									</md-input-container>
+									<md-input-container md-no-float class="inlineInput">
+										<input ng-model="updateItem.description" placeholder="description">
+									</md-input-container>
+									
+									<md-button type=submit class="md-fab md-mini pull-right secondoryBackgroundLighten saveBtn" ng-disabled='!(updateItem.title && updateItem.description)' aria-label="save Item">
+										<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+										<md-tooltip md-direction="left">Update</md-tooltip>
+									</md-button>
+								</form>
+								<div class="clearfix height30"></div>
+	
+							</div>
+						</div>
+
+						<div droppable id="rightdroper" class="droper">
+							<div class="wrapper">
+	
+							</div>
+						</div>
+							
+
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

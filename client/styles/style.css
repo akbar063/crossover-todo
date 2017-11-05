@@ -1,0 +1,248 @@
+/* some initial styling */
+a{
+	text-decoration: none;
+	color: initial;
+}
+a:hover{
+	text-decoration: none;
+	color:initial;
+}
+.loginTemp{
+	background: rgba(224, 242, 241,0.4);
+	min-height: 100vh;
+	width: 100%;
+}
+.loginTemp .loginWrapper {
+	padding: 50px;
+	padding-top: 1px;
+	background: rgba(255,255,255,1);
+	margin-top: 60px;
+	margin-bottom: 20px;
+	position: relative;
+}
+.btn-block{
+	margin: 0
+}
+.marginTop15{
+	margin-top: 15px;
+}
+.margin0{
+	margin: 0;
+}
+.marginBottom15{
+	margin-bottom: 15px;
+}
+/* screen loading on login view */
+.screenloader{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.2);
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+}
+md-toast.md-default-theme .md-toast-content{
+	background: #009688!important;
+}
+
+md-progress-circular path{
+	stroke: #303030;
+}
+.fa-custom{
+	font-size: 1.5em;
+	vertical-align: middle;
+	/*margin-top: -3px;*/
+	transition: all 0.5s;
+}
+.fa-custom2{
+	font-size: 2em;
+
+}
+.md-right10{
+	right: 10px!important;
+}
+.primaryBackground{
+	background: #E0F2F1!important;
+}
+.inProgressBg{
+	background: #FFAB00!important;	
+}
+.completedBg{
+	background: #00E676!important;	
+}
+.secondoryBackground{
+	background: #00695C!important;
+}
+
+.secondoryBackgroundLighten{
+	background: rgb(38, 166, 154)!important;
+}
+button.secondoryBackgroundLighten:hover{
+	background: rgba(38, 166, 154,0.6)!important;
+}
+button.secondoryBackgroundLighten[disabled]:hover{
+	background: rgb(38, 166, 154)!important;
+	cursor: not-allowed;
+}
+
+.utilWrapper button{
+	background: rgba(0,0,0,0.05);
+}
+
+.overflow{
+	overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow: ellipsis;
+}
+md-icon.fa{
+	font-size: 22px;
+    margin-left: 4px;
+}
+.fullheight{
+	height: 100%;
+}
+.fullwidth{
+	width: 100%;
+}
+.underTolbarHeight{
+	height: calc(100% - 64px);
+}
+.coloredBg{
+	background: rgba(224, 242, 241,0.4);
+}
+.bigbox{
+	/* width: 100%; */
+	height:calc(100% - 40px);
+	margin: 20px 10px;
+	background: rgba(0, 105, 91, 1);
+
+}
+.tasksWrapper{
+	padding: 10px 15px;
+	height: calc(100% - 64px);
+	overflow: auto;
+	
+}
+.saveBtn{
+	top: -20px;
+    left: 14px;
+}
+.clearfix.height30{
+	height: 31px;
+}
+.tasksWrapper .singleCard{
+	margin: 7px 5px;
+	padding: 7px 15px;
+	background: white;
+	outline:none
+}
+.tasksWrapper .singleCard:hover{
+	cursor: move;
+}
+.textCapitalize{
+	text-transform: capitalize
+}
+.md-button.itemDelete{
+	top: -13px;
+    left: 26px;
+}
+.inlineInput{
+	margin:0;
+	width: 100%;
+	height: 40px;
+	top:-20px;
+}
+.droper{
+	height: 90px;
+	background: rgba(0, 0, 0, 0.4);
+	border: 1px dotted white;
+	padding: 7px 15px;
+	margin: 7px 5px;
+	display:none
+}
+
+
+
+@media only screen and (max-width: 959px){
+	.underTolbarHeight{
+		height: calc(100% - 48px);
+	}
+}
+@media only screen and (max-width: 717px){
+	.underTolbarHeight{
+		height: calc(100% - 56px);
+	}
+}
+@media only screen and (max-width: 767px){
+	.tasksWrapper{
+		max-height: 400px;
+	}
+}
+
+@media only screen and (max-width: 575px) {
+    .loginTemp .loginWrapper {
+    	padding: 20px;
+	}
+
+
+}
+
+/* Animations */
+
+.animate-repeat {
+    -webkit-transition: 0.3s linear all;
+    transition: 0.3s linear all;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 0.3s;
+    transition:all linear 0.3s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+}
+
+/**
+ * Stagger Leave (hide) animation
+ */
+.animate-repeat.ng-leave-stagger {
+    /* this will have a 100ms delay between each successive leave animation */
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+
+    /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance */
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+/**
+ * Stagger ENTER ANIMATION
+ */
+.animate-repeat.ng-enter-stagger {
+    /* this will have a 100ms delay between each successive enter animation */
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+
+    /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance */
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}

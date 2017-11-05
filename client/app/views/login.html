@@ -1,0 +1,53 @@
+<div class="loginTemp">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+
+				<div class="md-whiteframe-5dp loginWrapper">
+
+					<h1 style="margin-top: 40px;" class="md-display-1 text-center">LOGIN</h1>
+
+					<h3 align="center" class="md-title stText">Enter Your Credentials</h3>
+
+					<p ng-if="invalidCre" class="animatehide" style="text-align: center;color: rgb(221,44,0)">Invalid Credentials..</p>
+
+					<form class="marginBottom15" name="loginForm" ng-submit="login(user,$event)">
+
+
+						<md-input-container style="margin-top: 50px;" class="md-block">
+					      <!-- Use floating placeholder instead of label -->
+					      <md-icon class="username fa fa-user fa-lg" aria-hidden="true"></md-icon>
+						  <input ng-model="user.username" name="username" type="text" placeholder="Username" ng-required="true">
+						  
+					    </md-input-container>
+
+					    <md-input-container class="md-block">
+					      <!-- Use floating placeholder instead of label -->
+					      <md-icon class="password fa fa-lock fa-lg" aria-hidden="true"></md-icon>
+						  <input ng-model="user.password" name="password" type="password" placeholder="Password" ng-required="true">
+						  
+					    </md-input-container>
+
+					    <md-input-container align="center" class="md-block margin0">
+					    	<md-button type="submit" ng-disabled='!(user.password && user.username)' class=" md-raised btn">
+					    		LOGIN
+					    	</md-button>
+					   	</md-input-container>
+					
+					
+					</form>
+
+			    	<div class="screenloader" ng-if="screenLoader">
+			    		<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+			    	</div>
+
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+</div>

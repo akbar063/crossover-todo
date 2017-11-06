@@ -15,6 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      // dependencies
       './client/libs/angular.min.js',
       './client/libs/ngAnimate.min.js',
       './client/libs/ngAria.min.js',

@@ -16,6 +16,8 @@ angular.module('todoApp')
             auth.login(userRef).then(function (res) {
                 // if credentials are correct
                 if (res.status == 'success') {
+                    // for testing
+                    $scope.data=res;
                     // Notifications through Toasts
                     var toast = $mdToast.simple()
                         .textContent(`Welcome ${res.username}`)

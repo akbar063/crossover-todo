@@ -33,7 +33,7 @@ describe('Checking auth factory', function() {
     // Checking login and logout
     it('Should successfull login and logout', function() {
         auth.login({'username': 'ali', 'password': MD5('password')}).then(function(res){
-            expect(res.usernmae).toEqual('alii');
+            expect(res.username).toEqual('ali');
             // auth.logout().then(function(res){
             //     // expect(res.status).toEqual('success');
             // })

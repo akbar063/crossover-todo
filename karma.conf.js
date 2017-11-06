@@ -15,7 +15,20 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './client/app/services/auth.service.spec.js'
+      './client/libs/angular.min.js',
+      './client/libs/ngAnimate.min.js',
+      './client/libs/ngAria.min.js',
+      './client/libs/angular.sanitize.min.js',
+      './client/libs/angular-ui-router.min.js',
+      './client/libs/tether.min.js',
+      './client/libs/ui-bootstrap.min.js',
+      './client/libs/angular-material.min.js',
+      './client/libs/angular-mocks.js',
+
+      "./client/app/*.js",
+
+      './client/app/*/*.js',
+
     ],
 
 

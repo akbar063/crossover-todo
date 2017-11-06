@@ -13,13 +13,13 @@ Reports:
 - unit testing of services
 
 
-Setup:	
-   Backend: 
+Setup:
    - Download the backend code from this link. 
    - MongoDb Deamon should be running.
    - Update the DB details in config.js
    - Run ‘npm install’ to download npm packages. Run ‘npm start’ to start the backend API.
    - By Default the backend will start web server on http://localhost:3000/
-App will be run on http://localhost:3000/
 
 Run `karma start` for unit testing
+
+front end developer:  [umimehar](https://github.com/umimehar)
